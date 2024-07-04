@@ -1,4 +1,4 @@
-/ Game Version: v3.0.74.20
+// Game Version: v.3.0.73.14
 #pragma once
 constexpr long OFF_REGION = 0x140000000; //[Static]->Region
 constexpr long OFF_LEVEL = 0x17e8d34; //[Miscellaneous]->LevelName
@@ -32,8 +32,8 @@ constexpr long OFF_NAME = 0x0481; //[RecvTable.DT_BaseEntity]->m_iName
 constexpr long OFF_SIGNIFIER_NAME = 0x0478; //[RecvTable.DT_BaseEntity]->m_iSignifierName
 constexpr long OFF_LIFE_STATE = 0x0690; //[RecvTable.DT_Player]->m_lifeState
 constexpr long OFF_BLEEDOUT_STATE = 0x2770; //[RecvTable.DT_Player]->m_bleedoutState
-constexpr long OFF_LAST_VISIBLE_TIME = 0x19a0; //[RecvTable.DT_BaseCombatCharacter]->CPlayer!lastVisibleTime // m_hudInfo_vis>
-constexpr long OFF_LAST_AIMEDAT_TIME = 0x19a0 + 0x8; 
+constexpr long OFF_LAST_VISIBLE_TIME = 0x19a0; //[RecvTable.DT_BaseCombatCharacter]->CPlayer!lastVisibleTime // m_hudInfo_visibilityTestAlwaysPasses + 0x2
+constexpr long OFF_LAST_AIMEDAT_TIME = 0x19a0 + 0x8; //[RecvTable.DT_BaseCombatCharacter]->CPlayer!lastVisibleTime + 0x8 // m_hudInfo_visibilityTestAlwaysPasses + 0x2 + 0x8
 constexpr long OFF_VIEW_ANGLES = 0x2544 - 0x14; //[DataMap.C_Player]->m_ammoPoolCapacity - 0x14
 constexpr long OFF_PUNCH_ANGLES = 0x2448; //[DataMap.C_Player]->m_currentFrameLocalPlayer.m_vecPunchWeapon_Angle
 constexpr long OFF_BREATH_ANGLES = (OFF_VIEW_ANGLES - 0x10);
@@ -46,19 +46,19 @@ constexpr long OFF_NAMEINDEX = 0x38; //[RecvTable.DT_BaseEntity]
 constexpr long OFF_XPLEVEL = 0x3734; //m_xp
 constexpr long OFF_SQUAD_ID = 0x0344; //m_squadID
 constexpr long OFF_GAMEMODE = 0x022e8360; //mp_gamemode
-constexpr long OFF_SPECTATOR_LIST = 0x1ef9c58;                //IDA signtature -> [48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF>
+constexpr long OFF_SPECTATOR_LIST = 0x1ef9c58;                //IDA signtature -> [48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF ? ? 48 85 C0 74 ? 48 63 4E 38]
  
 // Weapon
 constexpr long OFF_WEAPON_HANDLE = 0x1944; //[RecvTable.DT_BaseCombatCharacter]->m_latestPrimaryWeapons
 constexpr long OFF_WEAPON_INDEX = 0x1788; //[RecvTable.DT_WeaponX]->m_weaponNameIndex
 constexpr long OFFSET_AMMO = 0x1564; //[DT_WeaponX_LocalWeaponData]->m_ammoInClip
-constexpr long OFF_GRENADE_HANDLE = 0x1944; //[RecvTable.DT_Player]->m_latestNonOffhandWeapons
+constexpr long OFF_GRENADE_HANDLE = 0x1954; //[RecvTable.DT_Player]->m_latestNonOffhandWeapons
 constexpr long OFF_SKIN = 0x0d68; //[RecvTable.DT_BaseAnimating]->m_nSkin
 constexpr long OFF_WEAPON_DISCARDED = 0x15a9; //[RecvTable.DT_WeaponX]->m_discarded
 constexpr long OFFSET_TIME_BASE = 0x2098; //[RecvTable.DT_Player]->m_currentFramePlayer.timeBase
  
-constexpr long OFF_PROJECTILESCALE = 0x04ec; //CWeaponX!m_flProjectileScale //[WeaponSettings]->projectile_gravity_scale + [W>
-constexpr long OFF_PROJECTILESPEED = 0x04e4; //CWeaponX!m_flProjectileSpeed //[WeaponSettings]->projectile_launch_speed + [We>
+constexpr long OFF_PROJECTILESCALE = 0x04ec; //CWeaponX!m_flProjectileScale //[WeaponSettings]->projectile_gravity_scale + [WeaponSettingsMeta].base
+constexpr long OFF_PROJECTILESPEED = 0x04e4; //CWeaponX!m_flProjectileSpeed //[WeaponSettings]->projectile_launch_speed + [WeaponSettingsMeta].base
  
 // Glow
 constexpr long HIGHLIGHT_TYPE_SIZE = 0x34;
